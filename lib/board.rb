@@ -5,7 +5,7 @@ class Board
 
   def initialize
     @squares = create_board
-    self.connect_squares 
+    connect_squares
   end
 
   def create_board
@@ -21,27 +21,27 @@ class Board
       x += 1
       y = 0
     end
-    return board
+    board
   end
 
   def connect_squares
-    for square in self.squares
-      connected_node = self.squares.find{|mini_square| [square.value[0] - 2, square.value[1] - 1] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
-      connected_node = self.squares.find{|mini_square| [square.value[0] - 2, square.value[1] + 1] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
-      connected_node = self.squares.find{|mini_square| [square.value[0] - 1, square.value[1] - 2] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
-      connected_node = self.squares.find{|mini_square| [square.value[0] - 1, square.value[1] + 2] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
-      connected_node = self.squares.find{|mini_square| [square.value[0] + 1, square.value[1] + 2] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
-      connected_node = self.squares.find{|mini_square| [square.value[0] + 1, square.value[1] - 2] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
-      connected_node = self.squares.find{|mini_square| [square.value[0] + 2, square.value[1] + 1] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
-      connected_node = self.squares.find{|mini_square| [square.value[0] + 2, square.value[1] - 1] == mini_square.value}
-      square.connected_squares.push(connected_node) if connected_node != nil
+    squares.each do |square|
+      connected_node = squares.find { |mini_square| [square.value[0] - 2, square.value[1] - 1] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
+      connected_node = squares.find { |mini_square| [square.value[0] - 2, square.value[1] + 1] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
+      connected_node = squares.find { |mini_square| [square.value[0] - 1, square.value[1] - 2] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
+      connected_node = squares.find { |mini_square| [square.value[0] - 1, square.value[1] + 2] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
+      connected_node = squares.find { |mini_square| [square.value[0] + 1, square.value[1] + 2] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
+      connected_node = squares.find { |mini_square| [square.value[0] + 1, square.value[1] - 2] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
+      connected_node = squares.find { |mini_square| [square.value[0] + 2, square.value[1] + 1] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
+      connected_node = squares.find { |mini_square| [square.value[0] + 2, square.value[1] - 1] == mini_square.value }
+      square.connected_squares.push(connected_node) unless connected_node.nil?
     end
   end
 end
